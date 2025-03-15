@@ -5,12 +5,14 @@ import br.com.tokiomarine.safebankingapi.domain.exception.DomainException;
 
 public class BankAccount {
 
+    private Long id;
     private String number;
     private String bank;
     private String digit;
     private String agency;
 
-    public BankAccount(String number, String bank, String digit, String agency) {
+    public BankAccount(Long id, String number, String bank, String digit, String agency) {
+        this.id = id;
         this.number = isNumberValid(number);
         this.bank = Bank.getBankByCode(bank);
         this.digit = isDigitValid(digit);
@@ -32,35 +34,17 @@ public class BankAccount {
         throw new DomainException("Agency is not a valuable value: " + agency, "INVALID_AGENCY");
     }
 
+    public Long getId() {return id;}
     public String getNumber() {
         return number;
     }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
     public String getBank() {
         return bank;
     }
-
-    public void setBank(String bank) {
-        this.bank = bank;
-    }
-
     public String getDigit() {
         return digit;
     }
-
-    public void setDigit(String digit) {
-        this.digit = digit;
-    }
-
     public String getAgency() {
         return agency;
-    }
-
-    public void setAgency(String agency) {
-        this.agency = agency;
     }
 }

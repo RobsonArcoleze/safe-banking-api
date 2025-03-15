@@ -3,18 +3,22 @@ package br.com.tokiomarine.safebankingapi.domain.model;
 import br.com.tokiomarine.safebankingapi.domain.exception.DomainException;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Transfer {
 
+    private Long id;
     private BankAccount accountOrigin;
     private BankAccount accountDestination;
     private BigDecimal value;
     private LocalDateTime dateSchedule;
     private LocalDateTime dateTransfer;
+    private BigDecimal rate;
 
 
-    public Transfer(BankAccount accountOrigin, BankAccount accountDestination, BigDecimal value, LocalDateTime dateSchedule, LocalDateTime dateTransfer) {
+    public Transfer(Long id, BankAccount accountOrigin, BankAccount accountDestination, BigDecimal value, LocalDateTime dateSchedule, LocalDateTime dateTransfer) {
+        this.id = id;
         this.accountOrigin = accountOrigin;
         this.accountDestination = accountDestination;
         this.value = valueIsValid(value);
@@ -23,8 +27,8 @@ public class Transfer {
     }
 
     private LocalDateTime dateTransferIsValid(LocalDateTime dateTransfer){
-        LocalDateTime now = LocalDateTime.now();
-        if (dateTransfer.isBefore(now)) {
+        LocalDate now = LocalDate.now();
+        if (dateTransfer.toLocalDate().isBefore(now)) {
             throw new DomainException("Transfer date cannot be less than the current date: " + dateTransfer, "DATE_TRANSFER_INVALID");
         }
         return dateTransfer;
@@ -40,40 +44,25 @@ public class Transfer {
     public BankAccount getAccountOrigin() {
         return accountOrigin;
     }
-
-    public void setAccountOrigin(BankAccount accountOrigin) {
-        this.accountOrigin = accountOrigin;
-    }
-
     public BankAccount getAccountDestination() {
         return accountDestination;
     }
-
-    public void setAccountDestination(BankAccount accountDestination) {
-        this.accountDestination = accountDestination;
-    }
-
     public BigDecimal getValue() {
         return value;
     }
-
-    public void setValue(BigDecimal value) {
-        this.value = value;
-    }
-
     public LocalDateTime getDateSchedule() {
         return dateSchedule;
     }
-
-    public void setDateSchedule(LocalDateTime dateSchedule) {
-        this.dateSchedule = dateSchedule;
-    }
-
     public LocalDateTime getDateTransfer() {
         return dateTransfer;
     }
+    public Long getId() {return id;}
 
-    public void setDateTransfer(LocalDateTime dateTransfer) {
-        this.dateTransfer = dateTransfer;
+    public BigDecimal getRate() {
+        return rate;
+    }
+
+    public void setRate(BigDecimal rate) {
+        this.rate = rate;
     }
 }
