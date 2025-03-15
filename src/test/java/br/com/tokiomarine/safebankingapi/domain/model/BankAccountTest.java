@@ -11,7 +11,7 @@ class BankAccountTest {
     @Test
     @DisplayName("Valid Account Number Test")
     public void testValidAccountNumber() {
-        BankAccount bankAccount = new BankAccount("12345", "001", "1", "1234");
+        BankAccount bankAccount = new BankAccount(1L, "12345", "001", "1", "1234");
         assertEquals("12345", bankAccount.getNumber());
     }
 
@@ -19,7 +19,7 @@ class BankAccountTest {
     @DisplayName("Invalid Account Number Test")
     public void testInvalidAccountNumber() {
         DomainException exception = assertThrows(DomainException.class, () -> {
-            new BankAccount("1234", "001", "1", "1234");  // Número de conta inválido (menos de 5 dígitos)
+            new BankAccount(1L, "1234", "001", "1", "1234");  // Número de conta inválido (menos de 5 dígitos)
         });
         assertEquals("Invalid Account Number: 1234", exception.getMessage());
         assertEquals("INVALID_ACCOUNT_NUMBER", exception.getError());
@@ -28,7 +28,7 @@ class BankAccountTest {
     @Test
     @DisplayName("Valid Digit Test")
     public void testValidDigit() {
-        BankAccount bankAccount = new BankAccount("12345", "001", "1", "1234");
+        BankAccount bankAccount = new BankAccount(1L, "12345", "001", "1", "1234");
         assertEquals("1", bankAccount.getDigit());
     }
 
@@ -36,7 +36,7 @@ class BankAccountTest {
     @DisplayName("Invalid Digit Test")
     public void testInvalidDigit() {
         DomainException exception = assertThrows(DomainException.class, () -> {
-            new BankAccount("12345", "001", "A", "1234");  // Dígito inválido (não numérico)
+            new BankAccount(1L, "12345", "001", "A", "1234");  // Dígito inválido (não numérico)
         });
         assertEquals("Digit is not a valuable value: A", exception.getMessage());
         assertEquals("INVALID_DIGIT", exception.getError());
@@ -45,7 +45,7 @@ class BankAccountTest {
     @Test
     @DisplayName("Valid Agency Test")
     public void testValidAgency() {
-        BankAccount bankAccount = new BankAccount("12345", "001", "1", "12345");
+        BankAccount bankAccount = new BankAccount(1L, "12345", "001", "1", "12345");
         assertEquals("12345", bankAccount.getAgency());
     }
 
@@ -53,7 +53,7 @@ class BankAccountTest {
     @DisplayName("Invalid Agency Test")
     public void testInvalidAgency() {
         DomainException exception = assertThrows(DomainException.class, () -> {
-            new BankAccount("12345", "001", "1", "12");  // Agência inválida (menos de 3 dígitos)
+            new BankAccount(1L, "12345", "001", "1", "12");  // Agência inválida (menos de 3 dígitos)
         });
         assertEquals("Agency is not a valuable value: 12", exception.getMessage());
         assertEquals("INVALID_AGENCY", exception.getError());
@@ -62,7 +62,7 @@ class BankAccountTest {
     @Test
     @DisplayName("Valid Bank Test")
     public void testValidBank() {
-        BankAccount bankAccount = new BankAccount("12345", "001", "1", "1234");
+        BankAccount bankAccount = new BankAccount(1L , "12345", "001", "1", "1234");
         assertEquals("Banco do Brasil", bankAccount.getBank());
     }
 
@@ -70,7 +70,7 @@ class BankAccountTest {
     @DisplayName("Invalid Bank Test")
     public void testInvalidBank() {
         DomainException exception = assertThrows(DomainException.class, () -> {
-            new BankAccount("12345", "999", "1", "1234");  // Banco inexistente
+            new BankAccount(1L, "12345", "999", "1", "1234");  // Banco inexistente
         });
         assertEquals("Bank Code Not Found 999", exception.getMessage());
         assertEquals("BANK_NOT_FOUND", exception.getError());
