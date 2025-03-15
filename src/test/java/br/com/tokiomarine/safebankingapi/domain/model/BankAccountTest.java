@@ -63,7 +63,7 @@ class BankAccountTest {
     @DisplayName("Valid Bank Test")
     public void testValidBank() {
         BankAccount bankAccount = new BankAccount("12345", "001", "1", "1234");
-        assertEquals("001", bankAccount.getBank());
+        assertEquals("Banco do Brasil", bankAccount.getBank());
     }
 
     @Test
@@ -72,7 +72,7 @@ class BankAccountTest {
         DomainException exception = assertThrows(DomainException.class, () -> {
             new BankAccount("12345", "999", "1", "1234");  // Banco inexistente
         });
-        assertEquals("Código de banco não encontrado: 999", exception.getMessage());
-        assertEquals("BANK_CODE_NOT_FOUND", exception.getError());
+        assertEquals("Bank Code Not Found 999", exception.getMessage());
+        assertEquals("BANK_NOT_FOUND", exception.getError());
     }
 }
