@@ -1,9 +1,8 @@
-package br.com.tokiomarine.safebankingapi.application.dto;
+package br.com.tokiomarine.safebankingapi.interfaces.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Value;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

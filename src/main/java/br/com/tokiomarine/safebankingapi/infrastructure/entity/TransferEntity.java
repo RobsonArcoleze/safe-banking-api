@@ -21,7 +21,7 @@ public class TransferEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "account_origin_id", referencedColumnName = "id", nullable = false)
     private BankAccountEntity accountOrigin;
 

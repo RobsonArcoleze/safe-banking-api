@@ -28,6 +28,15 @@ public enum Bank {
     public static String getBankByCode(String code) {
         for (Bank bank : Bank.values()) {
             if (bank.getCode().equals(code)) {
+                return bank.getCode();
+            }
+        }
+        throw new DomainException("Bank Code Not Found " + code, "BANK_NOT_FOUND");
+    }
+
+    public static String getBankByCodeName(String code) {
+        for (Bank bank : Bank.values()) {
+            if (bank.getCode().equals(code)) {
                 return bank.getName();
             }
         }
