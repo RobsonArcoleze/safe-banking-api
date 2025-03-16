@@ -22,7 +22,7 @@ class TransferTest {
 
         Transfer transfer = new Transfer(1L, accountOrigin, accountDestination, validValue, now, now.plusDays(1));
 
-        assertEquals(validValue, transfer.getValue());
+        assertEquals(validValue, transfer.getTransferValue());
     }
 
     // Teste de valor de transferência inválido (menor ou igual a zero)

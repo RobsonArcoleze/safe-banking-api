@@ -11,17 +11,17 @@ public class Transfer {
     private Long id;
     private BankAccount accountOrigin;
     private BankAccount accountDestination;
-    private BigDecimal value;
+    private BigDecimal transferValue;
     private LocalDateTime dateSchedule;
     private LocalDateTime dateTransfer;
     private BigDecimal rate;
 
 
-    public Transfer(Long id, BankAccount accountOrigin, BankAccount accountDestination, BigDecimal value, LocalDateTime dateSchedule, LocalDateTime dateTransfer) {
+    public Transfer(Long id, BankAccount accountOrigin, BankAccount accountDestination, BigDecimal transferValue, LocalDateTime dateSchedule, LocalDateTime dateTransfer) {
         this.id = id;
         this.accountOrigin = accountOrigin;
         this.accountDestination = accountDestination;
-        this.value = valueIsValid(value);
+        this.transferValue = valueIsValid(transferValue);
         this.dateSchedule = dateSchedule;
         this.dateTransfer = dateTransferIsValid(dateTransfer);
     }
@@ -47,8 +47,8 @@ public class Transfer {
     public BankAccount getAccountDestination() {
         return accountDestination;
     }
-    public BigDecimal getValue() {
-        return value;
+    public BigDecimal getTransferValue() {
+        return transferValue;
     }
     public LocalDateTime getDateSchedule() {
         return dateSchedule;

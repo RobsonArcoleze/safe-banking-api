@@ -36,7 +36,7 @@ class TransferScheduleUseCaseImplTest {
     void shouldReturnFixedRateForSameDayTransfer() {
         Transfer transfer = createTransfer(0);
         BigDecimal rate = useCase.calculateRate(transfer);
-        BigDecimal expectedRate = BigDecimal.valueOf(3.00).add(transfer.getValue().multiply(BigDecimal.valueOf(0.025)));
+        BigDecimal expectedRate = BigDecimal.valueOf(3.00).add(transfer.getTransferValue().multiply(BigDecimal.valueOf(0.025)));
         assertThat(rate).isEqualByComparingTo(expectedRate);
     }
 
@@ -53,7 +53,7 @@ class TransferScheduleUseCaseImplTest {
     void shouldReturnPercentageForTransferIn11To20Days() {
         Transfer transfer = createTransfer(15);
         BigDecimal rate = useCase.calculateRate(transfer);
-        BigDecimal expectedRate = transfer.getValue().multiply(BigDecimal.valueOf(0.082));
+        BigDecimal expectedRate = transfer.getTransferValue().multiply(BigDecimal.valueOf(0.082));
         assertThat(rate).isEqualByComparingTo(expectedRate);
     }
 
@@ -62,7 +62,7 @@ class TransferScheduleUseCaseImplTest {
     void shouldReturnPercentageForTransferIn21To30Days() {
         Transfer transfer = createTransfer(25);
         BigDecimal rate = useCase.calculateRate(transfer);
-        BigDecimal expectedRate = transfer.getValue().multiply(BigDecimal.valueOf(0.069));
+        BigDecimal expectedRate = transfer.getTransferValue().multiply(BigDecimal.valueOf(0.069));
         assertThat(rate).isEqualByComparingTo(expectedRate);
     }
 
@@ -71,7 +71,7 @@ class TransferScheduleUseCaseImplTest {
     void shouldReturnPercentageForTransferIn31To40Days() {
         Transfer transfer = createTransfer(35);
         BigDecimal rate = useCase.calculateRate(transfer);
-        BigDecimal expectedRate = transfer.getValue().multiply(BigDecimal.valueOf(0.047));
+        BigDecimal expectedRate = transfer.getTransferValue().multiply(BigDecimal.valueOf(0.047));
         assertThat(rate).isEqualByComparingTo(expectedRate);
     }
 
@@ -80,7 +80,7 @@ class TransferScheduleUseCaseImplTest {
     void shouldReturnPercentageForTransferIn41To50Days() {
         Transfer transfer = createTransfer(45);
         BigDecimal rate = useCase.calculateRate(transfer);
-        BigDecimal expectedRate = transfer.getValue().multiply(BigDecimal.valueOf(0.017));
+        BigDecimal expectedRate = transfer.getTransferValue().multiply(BigDecimal.valueOf(0.017));
         assertThat(rate).isEqualByComparingTo(expectedRate);
     }
 
