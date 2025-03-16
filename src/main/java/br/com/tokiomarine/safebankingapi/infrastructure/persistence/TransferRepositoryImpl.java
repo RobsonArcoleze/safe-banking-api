@@ -8,6 +8,9 @@ import br.com.tokiomarine.safebankingapi.interfaces.mapper.TransferMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class TransferRepositoryImpl implements TransferRepository {
 
@@ -19,5 +22,18 @@ public class TransferRepositoryImpl implements TransferRepository {
 
         TransferEntity entity = TransferMapper.INSTANCE.toEntity(transfer);
         transferEntityRepository.save(entity);
+    }
+
+    @Override
+    public List<Transfer> findAll() {
+        List<TransferEntity> all = transferEntityRepository.findAll();
+        List<Transfer> transfers = new ArrayList<>();
+        if(!all.isEmpty()) {
+            all.forEach(entity -> {
+                transfers.add(TransferMapper.INSTANCE.toModel(entity));
+            });
+            return transfers;
+        }
+        return List.of();
     }
 }
