@@ -5,7 +5,7 @@ FROM openjdk:11-jdk-slim
 WORKDIR /app
 
 # Copiar o arquivo JAR da aplicação para o container
-COPY target/safe-banking-api-0.0.1-SNAPSHOT.jar.jar app.jar
+COPY target/safe-banking-api-0.0.1-SNAPSHOT.jar app.jar
 
 # Expor a porta em que a API rodará
 EXPOSE 8080
