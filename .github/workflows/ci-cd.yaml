@@ -34,16 +34,25 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Login no Docker Hub
+      - name: "Entrando no Dockerhub"
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Construir e enviar imagem para o Docker Hub
-        run: |
-          docker build -t meu-usuario/safe-banking-api:latest .
-          docker tag robsonarcoleze/safe-banking-api:latest robsonarcoleze/safe-banking-api:${{ github.sha }}
-          docker push robsonarcoleze/safe-banking-api:latest
-          docker push robsonarcoleze/safe-banking-api:${{ github.sha }}
+      - name: "Preparando Docker Build"
+        uses: docker/setup-buildx-action@v3
+
+      - name: "Gerando imagem do projeto"
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            robsonarcoleze/safe-banking-api:latest
+            robsonarcoleze/safe-banking-api:${{ github.sha }}
+
+      - name: "Saindo do Dockerhub"
+        run: docker logout
+
 
