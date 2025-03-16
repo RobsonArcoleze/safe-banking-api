@@ -19,12 +19,18 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DomainException.class)
     public ResponseEntity<ErrorResponse> handleDomainException(DomainException e) {
         ErrorResponse error = new ErrorResponse(e.getError(), e.getMessage());
+        if (e.getError().contains("NOT_FOUND")) {
+            return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(UseCaseException.class)
     public ResponseEntity<ErrorResponse> handleDomainException(UseCaseException e) {
         ErrorResponse error = new ErrorResponse(e.getError(), e.getMessage());
+        if (e.getError().contains("NOT_FOUND")) {
+            return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
