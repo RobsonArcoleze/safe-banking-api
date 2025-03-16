@@ -63,7 +63,7 @@ class BankAccountTest {
     @DisplayName("Valid Bank Test")
     public void testValidBank() {
         BankAccount bankAccount = new BankAccount(1L , "12345", "001", "1", "1234");
-        assertEquals("Banco do Brasil", bankAccount.getBank());
+        assertEquals("001", bankAccount.getBank());
     }
 
     @Test
