@@ -1,6 +1,6 @@
 # safe-banking-api
 Safe Banking é um projeto desenvolvido usando java 11 e spring boot 2.7.18 Consiste em aplicação de agendamento de transferência bancária e taxação de acordo com a data informada pelo cliente.
-
+- **YOUTUBE** - Video explicativo: [Safe-Bank](https://youtu.be/TRtNo_0U-K4)
 - OBS: Este projeto roda juntamento com uma aplicação em Angular neste [LINK](https://github.com/RobsonArcoleze/safe-banking-app)
 
 ## Arquitetura: Clean Architecture
