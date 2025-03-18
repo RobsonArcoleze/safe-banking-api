@@ -1,6 +1,8 @@
 # safe-banking-api
 Safe Banking é um projeto desenvolvido usando java 11 e spring boot 2.7.18 Consiste em aplicação de agendamento de transferência bancária e taxação de acordo com a data informada pelo cliente.
 
+- OBS: Este projeto roda juntamento com uma aplicação em Angular neste [LINK](https://github.com/RobsonArcoleze/safe-banking-app)
+
 ## Arquitetura: Clean Architecture
 
 A arquitetura **Clean Architecture** foi escolhida para garantir a separação de responsabilidades, modularidade e facilitar a manutenção da aplicação ao longo do tempo. A principal ideia da Clean Architecture é isolar o domínio (regras de negócio) das dependências externas, como frameworks, bibliotecas e banco de dados. Esse isolamento proporciona:
